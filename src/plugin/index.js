@@ -1,10 +1,12 @@
 import * as flexbox from './flexbox'
+import * as modal from './modal'
+
+import css from './static/css/font-awesome.min.css'
 
 const components = {
-	...flexbox
+	...flexbox,
+	...modal
 }
-
-console.log(1,2,3,4,5)
 
 const install = function(Vue,option) {
 	Object.keys(components).forEach((key)=>{
