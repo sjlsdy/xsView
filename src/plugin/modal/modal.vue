@@ -1,14 +1,12 @@
 <template>
-	<div class="xs-modal" :class="classObj" :value="value" v-show="visible">
-		<div class="xs-modal-mask" @click="closeModal"></div>
-		<div class="xs-modal-box">
-			<div class="xs-modal-title">
-				<div class="xs-modal-title-content">
-					标题
-				</div>
-				<div class="xs-modal-title-close" @click="closeModal"><i class="fa fa-times" aria-hidden="true"></i></div>
+	<div class="airx-modal" :class="classObj" :value="value" v-show="visible">
+		<div class="airx-modal-mask" :style="styleObj" @click="closeModal"></div>
+		<div class="airx-modal-box" :style="styleObj">
+			<div class="airx-modal-title">
+				<div class="airx-modal-title-content">{{title}}</div>
+				<div class="airx-modal-title-close" @click="closeModal"><i class="fa fa-times" aria-hidden="true"></i></div>
 			</div>
-			<div class="xs-modal-content">
+			<div class="airx-modal-content">
 				<slot></slot>
 			</div>
 		</div>
@@ -17,7 +15,7 @@
 
 <script>
 	export default {
-		name: 'xs-modal',
+		name: 'airx-modal',
 		props: {
 			value: {
 				type: Boolean,
@@ -26,6 +24,14 @@
 			orient: {
 				type: String,
 				default: 'horizontal'
+			},
+			zindex: {
+				type: Number,
+				default: 1
+			},
+			title: {
+				type: String,
+				default: '提示'
 			},
 		},
 		data() {
@@ -50,9 +56,14 @@
 		computed: {
 			classObj() {
 				let classObj = {};
-				if(this.orient === 'vertical') classObj['flex2-vertical'] = true;
+				if(this.orient === 'vertical') classObj['flex-vertical'] = true;
 				return classObj;
-			}
+			},
+			styleObj() {
+				let styleObj = {};
+				styleObj['z-index'] = this.zindex;
+				return styleObj;
+			},
 		},
 		methods: {
 			jsFun() {
@@ -62,6 +73,7 @@
 			closeModal() {
 				this.visible = false;
 				document.body.scrollTop = document.documentElement.scrollTop = this.scrollTopSize;
+				this.$emit("on-close");
 			},
 		}
 	}
