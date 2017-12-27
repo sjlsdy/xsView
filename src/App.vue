@@ -8,14 +8,19 @@
 				<div>
 					<airx-modal orient="vertical" v-model="modal3">
 						<div>3333333333</div>
-					</airx-modal><button @click="modal3 = true" style="padding: 20px;">弹窗</button>二级弹窗，二级弹窗，二级弹窗，二级弹窗，二级弹窗。
+					</airx-modal>
+					<airx-button type="primary" @click="modal3 = true">Primary</airx-button>
+					二级弹窗，二级弹窗，二级弹窗，二级弹窗，二级弹窗。
 				</div>
 			</airx-modal>
-			<div><button @click="modal2 = true" style="padding: 20px;">弹窗</button>一级弹窗，一级弹窗，一级弹窗。
+			<div>
+				<airx-button type="primary" @click="modal2 = true">Primary</airx-button>一级弹窗，一级弹窗，一级弹窗。
 			</div>
 		</airx-modal>
 		<router-view/>
-		<button @click="modal1 = true" style="padding: 20px;">弹窗<i class="fa fa-address-book" aria-hidden="true"></i></button>
+		<airx-button type="success" @click="modal1 = true">success</airx-button>
+		<airx-button type="error" @click="modal1 = true">error</airx-button>
+		<airx-table :columns="columns1" :data="data1"></airx-table>
 	</div>
 </template>
 
@@ -27,45 +32,84 @@
 				modal1: false,
 				modal2: false,
 				modal3: false,
-				cityList: [
+				cityList: [{
+						value: 'New York',
+						label: 'New York'
+					},
+					{
+						value: 'London',
+						label: 'London'
+					},
+					{
+						value: 'Sydney',
+						label: 'Sydney'
+					},
+					{
+						value: 'Ottawa',
+						label: 'Ottawa'
+					},
+					{
+						value: 'Paris',
+						label: 'Paris'
+					},
+					{
+						value: 'Canberra',
+						label: 'Canberra'
+					}
+				],
+				model4: '',
+				columns1: [
                     {
-                        value: 'New York',
-                        label: 'New York'
+                        title: '姓名',
+                        key: 'name'
                     },
                     {
-                        value: 'London',
-                        label: 'London'
+                        title: '年龄',
+                        key: 'age'
                     },
                     {
-                        value: 'Sydney',
-                        label: 'Sydney'
-                    },
-                    {
-                        value: 'Ottawa',
-                        label: 'Ottawa'
-                    },
-                    {
-                        value: 'Paris',
-                        label: 'Paris'
-                    },
-                    {
-                        value: 'Canberra',
-                        label: 'Canberra'
+                        title: '地址',
+                        key: 'address'
                     }
                 ],
-                model4: ''
+                data1: [
+                    {
+                        name: 'John Brown',
+                        age: 18,
+                        address: 'New York No. 1 Lake Park',
+                        date: '2016-10-03'
+                    },
+                    {
+                        name: 'Jim Green',
+                        age: 24,
+                        address: 'London No. 1 Lake Park',
+                        date: '2016-10-01'
+                    },
+                    {
+                        name: 'Joe Black',
+                        age: 30,
+                        address: 'Sydney No. 1 Lake Park',
+                        date: '2016-10-02'
+                    },
+                    {
+                        name: 'Jon Snow',
+                        age: 26,
+                        address: 'Ottawa No. 2 Lake Park',
+                        date: '2016-10-04'
+                    }
+                ]
 			}
-		}
+		},
+		methods: {
+			hello() {
+				alert("hello")
+			},
+		},
 	}
 </script>
 
 <style>
 	#app {
-		font-family: 'Avenir', Helvetica, Arial, sans-serif;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		text-align: center;
-		color: #2c3e50;
-		margin-top: 60px;
+		font-size: 12px;
 	}
 </style>

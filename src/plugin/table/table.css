@@ -1,0 +1,15 @@
+.airx-table {
+	width: 100%;
+	border-collapse:collapse;
+}
+.airx-table th,.airx-table td {
+	border:#DDDDDD 1px solid;
+	line-height: 2em;
+	padding: 0 10px;
+}
+.airx-table th {
+	background: #F9F9F9;
+}
+.airx-table td {
+	background: #FFFFFF;
+}
