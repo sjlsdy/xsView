@@ -96,7 +96,7 @@
                         age: 26,
                         address: 'Ottawa No. 2 Lake Park',
                         date: '2016-10-04'
-                    }
+                    },
                 ]
 			}
 		},

@@ -1,25 +1,33 @@
 <template>
-	<div>
-	<table cellspacing="0" cellpadding="0" border="0" class="airx-table" :class="classObj" :value="value">
-		<colgroup><col width="100" v-for="(val,index) in columns" :key="val.key"></colgroup>
-		<thead>
-			<tr>
-				<th v-for="(val,index) in columns" :key="val.key">
-					{{val.title}}
-				</th>
-			</tr>
-		</thead>
-	</table>
-	<table cellspacing="0" cellpadding="0" border="0" class="airx-table">
-		<colgroup><col width="100" v-for="(val,index) in columns" :key="val.key"></colgroup>
-		<tbody>
-			<tr v-for="(val,index) in data">
-				<td v-for="(tdval,index) in columns">
-					{{val[tdval.key]}}
-				</td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="airx-table-box">
+		<div class="airx-table-head">
+		<table cellspacing="0" cellpadding="0" border="0" class="airx-table" :class="classObj" :value="value">
+			<colgroup>
+				<col width="100" v-for="(val,index) in columns" :key="val.key">
+			</colgroup>
+			<thead>
+				<tr>
+					<th v-for="(val,index) in columns" :key="val.key">
+						{{val.title}}
+					</th>
+				</tr>
+			</thead>
+		</table>
+		</div>
+		<div class="airx-table-body">
+			<table cellspacing="0" cellpadding="0" border="0" class="airx-table">
+				<colgroup>
+					<col width="100" v-for="(val,index) in columns" :key="val.key">
+				</colgroup>
+				<tbody>
+					<tr v-for="(val,index) in data">
+						<td v-for="(tdval,index) in columns">
+							{{val[tdval.key]}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </template>
 

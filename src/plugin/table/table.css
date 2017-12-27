@@ -4,6 +4,7 @@
 }
 .airx-table th,.airx-table td {
 	border:#DDDDDD 1px solid;
+	border-bottom: none;
 	line-height: 2em;
 	padding: 0 10px;
 }
@@ -12,4 +13,10 @@
 }
 .airx-table td {
 	background: #FFFFFF;
+}
+
+.airx-table-body {
+	max-height: 200px;
+	overflow-y: auto;
+	border-bottom: #DDDDDD 1px solid;
 }
