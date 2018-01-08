@@ -1,9 +1,9 @@
 <template>
 	<div v-transfer-dom :data-transfer="transfer" class="airx-modal" :class="classObj" :value="value" v-show="visible">
-		<div class="airx-modal-mask" :style="styleObj" @click="closeModal"></div>
+		<div class="airx-modal-mask" :style="styleObj" @click="closeModal" v-if="maskVisible"></div>
 		<div class="airx-modal-box" :style="styleObj">
 			<div class="airx-modal-title">
-				<div class="airx-modal-title-content">{{title}}</div>
+				<div class="airx-modal-title-content">{{title}}=={{count}}</div>
 				<div class="airx-modal-title-close" @click="closeModal"><i class="fa fa-times" aria-hidden="true"></i></div>
 			</div>
 			<div class="airx-modal-content">
@@ -48,12 +48,18 @@
 			return {
 				visible: false,
 				scrollTopSize: 0,
+				maskVisible: true,
+				count: 0,
 			}
+		},
+		created() {},
+		mounted() {
+			console.log('装载了');
+			this.count++;
 		},
 		watch: {
 			value(val) {
 				let _self = this;
-				console.log(val);
 				this.visible = val;
 				if(val) {
 					_self.jsFun();
@@ -79,6 +85,11 @@
 			jsFun() {
 				this.scrollTopSize = document.body.scrollTop;
 				document.body.scrollTop = document.documentElement.scrollTop = 0;
+				let asds = document.getElementsByClassName("airx-modal-mask");
+				console.log(asds.length);
+				if(asds.length >= 1) {
+					this.maskVisible = false;
+				}
 			},
 			closeModal() {
 				this.visible = false;

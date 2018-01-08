@@ -1,15 +1,16 @@
 <template>
-	<option value="">
-		<slot></slot>
-	</option>
+	<div class="airx-layout" :class="classObj" :value="value">
+		<div class="airx-layout-left"></div>
+		<div class="airx-layout-right"></div>
+	</div>
 </template>
 
 <script>
 	export default {
-		name: 'airx-option',
+		name: 'airx-layout',
 		props: {
 			value: {
-				type: String,
+				type: Boolean,
 				default: false
 			},
 			orient: {
@@ -61,7 +62,7 @@
 				this.scrollTopSize = document.body.scrollTop;
 				document.body.scrollTop = document.documentElement.scrollTop = 0;
 			},
-			closeModal() {
+			closelayout() {
 				this.visible = false;
 				document.body.scrollTop = document.documentElement.scrollTop = this.scrollTopSize;
 				this.$emit("on-close");

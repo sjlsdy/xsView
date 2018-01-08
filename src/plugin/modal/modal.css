@@ -2,7 +2,7 @@
 	
 }
 .airx-modal-mask {
-	z-index: 1;
+	z-index: 101;
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -11,7 +11,7 @@
 	background: rgba(0,0,0,0.2);
 }
 .airx-modal-box {
-	z-index: 2;
+	z-index: 102;
 	position: absolute;
 	top: 50px;
 	right: 50px;

@@ -1,6 +1,7 @@
 import * as flexbox from './flexbox'
 import * as modal from './modal'
 import * as select from './select'
+import * as layout from './layout'
 import * as button from './button'
 import * as table from './table'
 
@@ -10,6 +11,7 @@ const components = {
 	...flexbox,
 	...modal,
 	...select,
+	...layout,
 	...button,
 	...table,
 }

@@ -1,0 +1,44 @@
+html,
+body {
+}
+
+.layout-box {
+    .layout-left {
+        z-index: 3;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 200px;
+        overflow-y: auto;
+        background: #F9F9F9;
+        box-shadow: 0 0 5px rgba(0,0,0,0.15);
+    }
+    .layout-main {
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 200px;
+        overflow: auto;
+        .layout-main-content {
+            padding: 20px;
+        }
+    }
+}
+
+.nav {
+    ul {
+        padding: 20px 0;
+        li {
+            cursor: pointer;
+            line-height: 30px;
+            padding: 0 20px;
+            &:hover,&.active {
+                background: #FF9900;
+                color: #FFF;
+            }
+        }
+    }
+}

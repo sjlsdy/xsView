@@ -6,6 +6,8 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+import './assets/common.less'
+
 import plugin from './plugin'
 Vue.use(plugin)
 /* eslint-disable no-new */

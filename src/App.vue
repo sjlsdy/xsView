@@ -1,26 +1,23 @@
 <template>
-	<div id="app">
-		<airx-select v-model="model4" style="width:200px">
-			<airx-option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</airx-option>
-		</airx-select>
-		<airx-modal orient="vertical" v-model="modal1" :transfer="true">
-			<airx-modal orient="vertical" v-model="modal2">
-				<div>
-					<airx-modal orient="vertical" v-model="modal3">
-						<div>3333333333</div>
-					</airx-modal>
-					<airx-button type="primary" @click="modal3 = true">Primary</airx-button>
-					二级弹窗，二级弹窗，二级弹窗，二级弹窗，二级弹窗。
-				</div>
-			</airx-modal>
-			<div>
-				<airx-button type="primary" @click="modal2 = true">Primary</airx-button>一级弹窗，一级弹窗，一级弹窗。
+	<div id="app" class="layout-box">
+		<div class="layout-left">
+			<div class="nav">
+				<ul>
+					<li v-for="(item,index) in navData" :class="{ active: item.selected}" @click="setNav(index)">{{item.name}}</li>
+				</ul>
 			</div>
-		</airx-modal>
-		<router-view/>
-		<airx-button type="success" @click="modal1 = true">success</airx-button>
-		<airx-button type="error" @click="modal1 = true">error</airx-button>
-		<airx-table :columns="columns1" :data="data1"></airx-table>
+		</div>
+		<div class="layout-main">
+			<div class="layout-main-content">
+				<airx-select v-model="model4" style="width:200px">
+					<airx-option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</airx-option>
+				</airx-select>
+				<router-view/>
+				<airx-button type="error" @click="modal1 = true">error</airx-button>
+				<airx-table :columns="columns1" :data="data1"></airx-table>
+				<router-view></router-view>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -29,6 +26,10 @@
 		name: 'app',
 		data() {
 			return {
+				navData: [{
+					label: 'Modal 弹窗',
+					name: 'modal'
+				}],
 				modal1: false,
 				modal2: false,
 				modal3: false,
@@ -104,6 +105,9 @@
 			hello() {
 				alert("hello")
 			},
+			setNav() {
+				this.$router()
+			}
 		},
 	}
 </script>

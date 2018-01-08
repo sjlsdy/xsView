@@ -1,0 +1,29 @@
+.airx-layout {
+	display: inline-block;
+	height: 30px;
+	line-height: 30px;
+	border: 1px #DDDDDD solid;
+	border-radius: 5px;
+	cursor: pointer;
+	position: relative;
+}
+
+.airx-layout-left {
+	z-index: 3;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 200px;
+	background: #F9F9F9;
+}
+
+.airx-layout-right {
+	z-index: 1;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 200px;
+	background: #FFFFFF;
+}
