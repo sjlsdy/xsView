@@ -3,7 +3,7 @@
 		<airx-select v-model="model4" style="width:200px">
 			<airx-option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</airx-option>
 		</airx-select>
-		<airx-modal orient="vertical" v-model="modal1">
+		<airx-modal orient="vertical" v-model="modal1" :transfer="true">
 			<airx-modal orient="vertical" v-model="modal2">
 				<div>
 					<airx-modal orient="vertical" v-model="modal3">

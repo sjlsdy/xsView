@@ -1,5 +1,5 @@
 <template>
-	<div class="airx-modal" :class="classObj" :value="value" v-show="visible">
+	<div v-transfer-dom :data-transfer="transfer" class="airx-modal" :class="classObj" :value="value" v-show="visible">
 		<div class="airx-modal-mask" :style="styleObj" @click="closeModal"></div>
 		<div class="airx-modal-box" :style="styleObj">
 			<div class="airx-modal-title">
@@ -14,8 +14,13 @@
 </template>
 
 <script>
+	import TransferDom from '../directives/transfer-dom';
+
 	export default {
 		name: 'airx-modal',
+		directives: {
+			TransferDom
+		},
 		props: {
 			value: {
 				type: Boolean,
@@ -32,6 +37,11 @@
 			title: {
 				type: String,
 				default: '提示'
+			},
+			// 是否将当前元素置于页面DOM最底部
+			transfer: {
+				type: Boolean,
+				default: true
 			},
 		},
 		data() {
