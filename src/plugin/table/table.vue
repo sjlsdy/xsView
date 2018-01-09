@@ -3,7 +3,7 @@
 		<div class="airx-table-head">
 		<table cellspacing="0" cellpadding="0" border="0" class="airx-table" :class="classObj" :value="value">
 			<colgroup>
-				<col width="100" v-for="(val,index) in columns" :key="val.key">
+				<col width="100" v-for="(val,index) in columns" :key="val.key" :width="val.width">
 			</colgroup>
 			<thead>
 				<tr>
@@ -17,7 +17,7 @@
 		<div class="airx-table-body">
 			<table cellspacing="0" cellpadding="0" border="0" class="airx-table">
 				<colgroup>
-					<col width="100" v-for="(val,index) in columns" :key="val.key">
+					<col width="100" v-for="(val,index) in columns" :key="val.key" :width="val.width">
 				</colgroup>
 				<tbody>
 					<tr v-for="(val,index) in data">
