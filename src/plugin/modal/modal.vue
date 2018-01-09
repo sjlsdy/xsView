@@ -1,9 +1,9 @@
 <template>
 	<div v-transfer-dom :data-transfer="transfer" class="airx-modal" :class="classObj" :value="value" v-show="visible">
-		<div class="airx-modal-mask" :style="styleObj" @click="closeModal" v-if="maskVisible"></div>
-		<div class="airx-modal-box" :style="styleObj">
+		<div class="airx-modal-mask" :style="maskStyleObj" @click="closeModal"></div>
+		<div class="airx-modal-box" :style="boxStyleObj">
 			<div class="airx-modal-title">
-				<div class="airx-modal-title-content">{{title}}=={{count}}</div>
+				<div class="airx-modal-title-content">{{title}}</div>
 				<div class="airx-modal-title-close" @click="closeModal"><i class="fa fa-times" aria-hidden="true"></i></div>
 			</div>
 			<div class="airx-modal-content">
@@ -18,6 +18,13 @@
 
 	export default {
 		name: 'airx-modal',
+		/**
+		 * modal 模态接口参数
+		 * @param {string} modal.zindex 模态框z-index层级
+		 * @param {string} modal.title 模态框标题
+		 * @param {string} modal.mask 模态框是否显示遮罩
+		 * @param {string} modal.transfer 是否将当前元素置于页面DOM最底部
+		 */
 		directives: {
 			TransferDom
 		},
@@ -38,7 +45,10 @@
 				type: String,
 				default: '提示'
 			},
-			// 是否将当前元素置于页面DOM最底部
+			mask: {
+				type: Boolean,
+				default: true
+			},
 			transfer: {
 				type: Boolean,
 				default: true
@@ -48,15 +58,30 @@
 			return {
 				visible: false,
 				scrollTopSize: 0,
-				maskVisible: true,
-				count: 0,
 			}
 		},
+		// 在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。
+		beforeCreate() {},
+		// 在实例创建完成后被立即调用
 		created() {},
-		mounted() {
-			console.log('装载了');
-			this.count++;
-		},
+		// 在挂载开始之前被调用
+		beforeMount() {},
+		// el 被新创建的 vm.$el 替换，并挂载到实例上去之后调用该钩子
+		mounted() {},
+		// 数据更新时调用
+		beforeUpdate() {},
+		// 由于数据更改导致的虚拟 DOM 重新渲染和打补丁
+		updated() {},
+		// keep-alive 组件激活时调用
+		activated() {},
+		// keep-alive 组件停用时调用
+		deactivated() {},
+		// 实例销毁之前调用
+		beforeDestroy() {},
+		// 实例销毁后调用
+		destroyed() {},
+		// 当捕获一个来自子孙组件的错误时被调用
+		errorCaptured() {},
 		watch: {
 			value(val) {
 				let _self = this;
@@ -75,9 +100,16 @@
 				if(this.orient === 'vertical') classObj['flex-vertical'] = true;
 				return classObj;
 			},
-			styleObj() {
+			boxStyleObj() {
 				let styleObj = {};
 				styleObj['z-index'] = this.zindex;
+				if(!this.mask) styleObj['box-shadow'] = 'none';
+				return styleObj;
+			},
+			maskStyleObj() {
+				let styleObj = {};
+				styleObj['z-index'] = this.zindex;
+				if(!this.mask) styleObj['opacity'] = 0;
 				return styleObj;
 			},
 		},
@@ -85,11 +117,6 @@
 			jsFun() {
 				this.scrollTopSize = document.body.scrollTop;
 				document.body.scrollTop = document.documentElement.scrollTop = 0;
-				let asds = document.getElementsByClassName("airx-modal-mask");
-				console.log(asds.length);
-				if(asds.length >= 1) {
-					this.maskVisible = false;
-				}
 			},
 			closeModal() {
 				this.visible = false;

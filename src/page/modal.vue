@@ -2,14 +2,14 @@
 	<div>
 	<airx-button type="success" @click="modal1 = true">打开弹窗</airx-button>
 	<airx-modal :zindex='101' title="First" v-model="modal1">
-		<airx-button type="primary" @click="modal2 = true">Primary</airx-button>
+		<airx-button type="primary" @click="modal2 = true">open second</airx-button>
 		<br /><br />
 		First Modal.
-		<airx-modal :zindex='102' orient="vertical" title="Second" v-model="modal2">
-				<airx-button type="primary" @click="modal3 = true">Primary</airx-button>
+		<airx-modal :zindex='102' orient="vertical" title="Second" :mask="false" v-model="modal2">
+				<airx-button type="primary" @click="modal3 = true">open third</airx-button>
 				<br /><br />
 				Second Modal.
-				<airx-modal :zindex='103' orient="vertical" title="Third" v-model="modal3">
+				<airx-modal :zindex='103' orient="vertical" title="Third" :mask="false" v-model="modal3">
 					Third Modal.
 				</airx-modal>
 		</airx-modal>
