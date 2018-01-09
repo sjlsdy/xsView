@@ -6,7 +6,13 @@
 	border:#DDDDDD 1px solid;
 	border-bottom: none;
 	line-height: 2em;
-	padding: 4px 14px;
+	padding: 8px 10px;
+}
+.airx-table th {
+	border-bottom: #DDDDDD 1px solid;
+}
+.airx-table tr:first-child td {
+	border-top: none;
 }
 .airx-table th {
 	background: #F9F9F9;

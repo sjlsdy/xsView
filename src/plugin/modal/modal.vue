@@ -1,7 +1,7 @@
 <template>
 	<div v-transfer-dom :data-transfer="transfer" class="airx-modal" :class="classObj" :value="value" v-show="visible">
 		<div class="airx-modal-mask" :style="maskStyleObj" @click="closeModal"></div>
-		<div class="airx-modal-box" :style="boxStyleObj">
+		<div class="airx-modal-box flipInX animated" :style="boxStyleObj">
 			<div class="airx-modal-title">
 				<div class="airx-modal-title-content">{{title}}</div>
 				<div class="airx-modal-title-close" @click="closeModal"><i class="fa fa-times" aria-hidden="true"></i></div>
@@ -15,6 +15,8 @@
 
 <script>
 	import TransferDom from '../directives/transfer-dom';
+
+	import '../animate.min.css';
 
 	export default {
 		name: 'airx-modal',
@@ -37,6 +39,10 @@
 				type: String,
 				default: 'horizontal'
 			},
+			size: {
+				type: String,
+				default: 'lg'
+			},
 			zindex: {
 				type: Number,
 				default: 1
@@ -46,6 +52,10 @@
 				default: '提示'
 			},
 			mask: {
+				type: Boolean,
+				default: true
+			},
+			shadow: {
 				type: Boolean,
 				default: true
 			},
@@ -103,7 +113,29 @@
 			boxStyleObj() {
 				let styleObj = {};
 				styleObj['z-index'] = this.zindex;
-				if(!this.mask) styleObj['box-shadow'] = 'none';
+				if(!this.shadow) styleObj['box-shadow'] = 'none';
+
+				switch(this.size) {
+					case 'lg':
+						styleObj['left'] = '50px';
+						styleObj['right'] = '50px';
+						break;
+					case 'md':
+						styleObj['left'] = '150px';
+						styleObj['right'] = '150px';
+						break;
+					case 'sm':
+						styleObj['left'] = '250px';
+						styleObj['right'] = '250px';
+						break;
+					case 'xs':
+						styleObj['left'] = '350px';
+						styleObj['right'] = '350px';
+						break;
+					default:
+						break;
+				}
+
 				return styleObj;
 			},
 			maskStyleObj() {
