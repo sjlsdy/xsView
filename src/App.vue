@@ -34,6 +34,9 @@
 				},{
 					label: 'modal',
 					name: 'Modal 弹窗'
+				},{
+					label: 'select',
+					name: 'Select 下拉框'
 				}],
 				modal1: false,
 				modal2: false,

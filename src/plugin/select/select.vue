@@ -1,8 +1,14 @@
 <template>
 	<div class="airx-select" :class="classObj" :value="value">
-		<select class="select-green">
-		<slot></slot>
-		</select>
+		<button class="airx-select-btn" @click.stop @click="visible = visible?false:true">
+				<span>请选择</span>
+				<span class="select-green"></span>
+			</button>
+		<div class="airx-select-box" v-show="visible" @click.stop>
+			<ul>
+				<slot></slot>
+			</ul>
+		</div>
 	</div>
 </template>
 
@@ -32,6 +38,12 @@
 				visible: false,
 				scrollTopSize: 0,
 			}
+		},
+		mounted() {
+			let _self = this;
+			document.body.addEventListener("click", function() {  
+				_self.closeselect();
+			})
 		},
 		watch: {
 			value(val) {
@@ -65,7 +77,6 @@
 			},
 			closeselect() {
 				this.visible = false;
-				document.body.scrollTop = document.documentElement.scrollTop = this.scrollTopSize;
 				this.$emit("on-close");
 			},
 		}

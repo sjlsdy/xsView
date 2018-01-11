@@ -1,7 +1,7 @@
 <template>
-	<option value="">
+	<li value="" @click="hello">
 		<slot></slot>
-	</option>
+	</li>
 </template>
 
 <script>
@@ -57,6 +57,9 @@
 			},
 		},
 		methods: {
+			hello() {
+				
+			},
 			jsFun() {
 				this.scrollTopSize = document.body.scrollTop;
 				document.body.scrollTop = document.documentElement.scrollTop = 0;

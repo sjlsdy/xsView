@@ -1,7 +1,7 @@
 <template>
 	<div v-transfer-dom :data-transfer="transfer" class="airx-modal" :class="classObj" :value="value" v-show="visible">
 		<div class="airx-modal-mask" :style="maskStyleObj" @click="closeModal"></div>
-		<div class="airx-modal-box flipInX animated" :style="boxStyleObj">
+		<div class="airx-modal-box" :style="boxStyleObj">
 			<div class="airx-modal-title">
 				<div class="airx-modal-title-content">{{title}}</div>
 				<div class="airx-modal-title-close" @click="closeModal"><i class="fa fa-times" aria-hidden="true"></i></div>
@@ -117,20 +117,20 @@
 
 				switch(this.size) {
 					case 'lg':
-						styleObj['left'] = '50px';
-						styleObj['right'] = '50px';
+						styleObj['left'] = '5%';
+						styleObj['right'] = '5%';
 						break;
 					case 'md':
-						styleObj['left'] = '150px';
-						styleObj['right'] = '150px';
+						styleObj['left'] = '15%';
+						styleObj['right'] = '15%';
 						break;
 					case 'sm':
-						styleObj['left'] = '250px';
-						styleObj['right'] = '250px';
+						styleObj['left'] = '25%';
+						styleObj['right'] = '25%';
 						break;
 					case 'xs':
-						styleObj['left'] = '350px';
-						styleObj['right'] = '350px';
+						styleObj['left'] = '35%';
+						styleObj['right'] = '35%';
 						break;
 					default:
 						break;

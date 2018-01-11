@@ -22,7 +22,7 @@
 				<tbody>
 					<tr v-for="(val,index) in data">
 						<td v-for="(tdval,index) in columns">
-							{{val[tdval.key]}}
+							<span v-html="val[tdval.key]"></span>
 						</td>
 					</tr>
 				</tbody>
