@@ -3,10 +3,11 @@
 		<h3>Select 下拉框</h3>
 		<h4>概述</h4>
 		<p>
-			模态对话框，在弹层中显示。
+			模拟下拉框。
 		</p>
-		<airx-select :value="value1" @input="value1 = $event" :data="cityList"></airx-select>
-		==> {{value1}}
+		<airx-select v-model="value1" :data="cityList"></airx-select>
+		==> {{value1}} ==>
+		<airx-select v-model="value1" :data="cityList"></airx-select>
 		<h3>API说明</h3>
 		<h4>Props</h4>
 		<airx-table :columns="columns1" :data="data1"></airx-table>
@@ -21,30 +22,76 @@
 	export default {
 		data() {
 			return {
-				value1: '',
+				value1: '3',
 				cityList: [{
-						value: 'New York',
-						label: 'New York'
+						value: '1',
+						label: '日本 东京'
 					},
 					{
-						value: 'London',
-						label: 'London'
+						value: '2',
+						label: '美国 纽约'
 					},
 					{
-						value: 'Sydney',
-						label: 'Sydney'
+						value: '3',
+						label: '美国 洛杉矶'
 					},
 					{
-						value: 'Ottawa',
-						label: 'Ottawa'
+						value: '4',
+						label: '英国 伦敦'
 					},
 					{
-						value: 'Paris',
-						label: 'Paris'
+						value: '5',
+						label: '法国 巴黎'
 					},
 					{
-						value: 'Canberra',
-						label: 'Canberra'
+						value: '6',
+						label: '美国 芝加哥'
+					}, {
+						value: '7',
+						label: '日本 大阪/神户'
+					},
+					{
+						value: '8',
+						label: '墨西哥 墨西哥城'
+					},
+					{
+						value: '9',
+						label: '美国 华盛顿特区'
+					},
+					{
+						value: '10',
+						label: '美国 旧金山'
+					},
+					{
+						value: '11',
+						label: '韩国 首尔'
+					},
+					{
+						value: '12',
+						label: '日本 京都'
+					}, {
+						value: '13',
+						label: '日本 横滨'
+					},
+					{
+						value: '14',
+						label: '中国 香港'
+					},
+					{
+						value: '15',
+						label: '加拿大 蒙特利尔'
+					},
+					{
+						value: '16',
+						label: '加拿大 温哥华'
+					},
+					{
+						value: '17',
+						label: '加拿大 多伦多'
+					},
+					{
+						value: '18',
+						label: '荷兰 阿姆斯特丹'
 					}
 				],
 				columns1: [{

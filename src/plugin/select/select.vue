@@ -1,12 +1,13 @@
 <template>
-	<div class="airx-select" :class="classObj">
+	<div class="airx-select" :class="classObj" :style="styleObj">
 		<button class="airx-select-btn" @click.stop @click="visible = visible?false:true">
-			<span>{{setValue==''?'请选择':setValue}}</span>
+			<span>{{setValue==''?'请选择':setLabel}}</span>
+			<!--真实value：{{value}}-->
 			<span class="select-green"></span>
 		</button>
 		<div class="airx-select-box" v-show="visible" @click.stop>
 			<ul>
-				<li v-for="(item,index) in optionData" :key="item.value" :class="{hover:item.set}" @click="setItem(index)">{{item.value}}</li>
+				<li v-for="(item,index) in optionData" :key="item.value" :class="{hover:item.set}" @click="setItem(item.value)">{{item.label}}</li>
 			</ul>
 		</div>
 	</div>
@@ -19,7 +20,7 @@
 		props: {
 			value: {
 				type: String,
-				default: false
+				default: ''
 			},
 			orient: {
 				type: String,
@@ -29,10 +30,6 @@
 				type: Number,
 				default: 1
 			},
-			setvalue: {
-				type: String,
-				default: ''
-			},
 			data: {
 				type: Array,
 				default: []
@@ -41,12 +38,13 @@
 		data() {
 			return {
 				visible: false,
-				scrollTopSize: 0,
-				setValue: this.setvalue,
+				setValue: this.value,
+				setLabel: '',
 				optionData: this.data,
 			}
 		},
 		created() {
+			this.viewLabel()
 		},
 		mounted() {
 			let _self = this;
@@ -55,20 +53,9 @@
 			})
 		},
 		watch: {
-			/*
-			value(val) {
-				let _self = this;
-				this.visible = val;
-				if(val) {
-					//_self.jsFun();
-				}
-			},
-			visible(val) {
-				let _self = this;
-				console.log(val)
-				this.$emit('input', _self.setValue);
+			value() {
+				this.setItem(this.value);
 			}
-			*/
 		},
 		computed: {
 			classObj() {
@@ -83,19 +70,34 @@
 			},
 		},
 		methods: {
-			setItem(index) {
+			// 通过value值找到下标以及标注选中项
+			setItem(value) {
 				let _self = this;
-				_self.setValue = _self.optionData[index]['value'];
+				let index = 0;
+				_self.setValue = value;
 				for(let i = 0; i < _self.optionData.length; i++) {
-					_self.optionData[i]['set'] = false;
+					if(_self.optionData[i]['value'] == value) {
+						_self.optionData[i]['set'] = true;
+						index = i;
+					} else {
+						_self.optionData[i]['set'] = false;
+					}
 				}
 				let obj = _self.optionData[index];
-				obj['set'] = true;
 				_self.$set(_self.optionData, index, obj);
+				_self.viewLabel();
 				_self.visible = false;
-				//console.log(_self.setValue)
 				_self.$emit("input", _self.setValue);
 			},
+			// 生成选中项显示的字符
+			viewLabel() {
+				let _self = this;
+				for(let i = 0; i < _self.optionData.length; i++) {
+					if(_self.setValue === _self.optionData[i]['value']) {
+						_self.setLabel = _self.optionData[i]['label'];
+					}
+				}
+			}
 		}
 	}
 </script>
