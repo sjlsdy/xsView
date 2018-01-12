@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 
 import modal from '@/page/modal'
 import select from '@/page/select'
+import button from '../page/button'
 
 Vue.use(Router)
 
@@ -20,5 +21,9 @@ export default new Router({
 		path: '/select',
 		name: 'select',
 		component: select,
+	}, {
+		path: '/button',
+		name: 'button',
+		component: button,
 	}]
 })

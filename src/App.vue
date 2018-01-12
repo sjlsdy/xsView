@@ -37,6 +37,9 @@
 				},{
 					label: 'select',
 					name: 'Select 下拉框'
+				},{
+					label: 'button',
+					name: 'Button 按钮'
 				}],
 				modal1: false,
 				modal2: false,
