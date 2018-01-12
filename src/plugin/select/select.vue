@@ -1,12 +1,12 @@
 <template>
-	<div class="airx-select" :class="classObj" :value="value">
+	<div class="airx-select" :class="classObj">
 		<button class="airx-select-btn" @click.stop @click="visible = visible?false:true">
-				<span>请选择</span>
-				<span class="select-green"></span>
-			</button>
+			<span>{{setValue==''?'请选择':setValue}}</span>
+			<span class="select-green"></span>
+		</button>
 		<div class="airx-select-box" v-show="visible" @click.stop>
 			<ul>
-				<slot></slot>
+				<li v-for="(item,index) in optionData" :key="item.value" :class="{hover:item.set}" @click="setItem(index)">{{item.value}}</li>
 			</ul>
 		</div>
 	</div>
@@ -14,10 +14,11 @@
 
 <script>
 	export default {
+		components: {},
 		name: 'airx-select',
 		props: {
 			value: {
-				type: Boolean,
+				type: String,
 				default: false
 			},
 			orient: {
@@ -28,35 +29,46 @@
 				type: Number,
 				default: 1
 			},
-			title: {
+			setvalue: {
 				type: String,
-				default: '提示'
+				default: ''
 			},
+			data: {
+				type: Array,
+				default: []
+			}
 		},
 		data() {
 			return {
 				visible: false,
 				scrollTopSize: 0,
+				setValue: this.setvalue,
+				optionData: this.data,
 			}
+		},
+		created() {
 		},
 		mounted() {
 			let _self = this;
-			document.body.addEventListener("click", function() {  
-				_self.closeselect();
+			document.body.addEventListener("click", function() {
+				_self.visible = false;
 			})
 		},
 		watch: {
+			/*
 			value(val) {
 				let _self = this;
-				console.log(val);
 				this.visible = val;
 				if(val) {
-					_self.jsFun();
+					//_self.jsFun();
 				}
 			},
 			visible(val) {
-				this.$emit('input', val);
+				let _self = this;
+				console.log(val)
+				this.$emit('input', _self.setValue);
 			}
+			*/
 		},
 		computed: {
 			classObj() {
@@ -71,13 +83,18 @@
 			},
 		},
 		methods: {
-			jsFun() {
-				this.scrollTopSize = document.body.scrollTop;
-				document.body.scrollTop = document.documentElement.scrollTop = 0;
-			},
-			closeselect() {
-				this.visible = false;
-				this.$emit("on-close");
+			setItem(index) {
+				let _self = this;
+				_self.setValue = _self.optionData[index]['value'];
+				for(let i = 0; i < _self.optionData.length; i++) {
+					_self.optionData[i]['set'] = false;
+				}
+				let obj = _self.optionData[index];
+				obj['set'] = true;
+				_self.$set(_self.optionData, index, obj);
+				_self.visible = false;
+				//console.log(_self.setValue)
+				_self.$emit("input", _self.setValue);
 			},
 		}
 	}

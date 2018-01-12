@@ -5,9 +5,8 @@
 		<p>
 			模态对话框，在弹层中显示。
 		</p>
-		<airx-select v-model="modal1" style="width:200px">
-			<airx-option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</airx-option>
-		</airx-select>
+		<airx-select :value="value1" @input="value1 = $event" :data="cityList"></airx-select>
+		==> {{value1}}
 		<h3>API说明</h3>
 		<h4>Props</h4>
 		<airx-table :columns="columns1" :data="data1"></airx-table>
@@ -22,7 +21,7 @@
 	export default {
 		data() {
 			return {
-				modal1: true,
+				value1: '',
 				cityList: [{
 						value: 'New York',
 						label: 'New York'
@@ -118,6 +117,11 @@
 					defaultVal: 'true',
 					switchVal: ''
 				}, ]
+			}
+		},
+		methods: {
+			hello(e) {
+				console.log(e)
 			}
 		}
 	}

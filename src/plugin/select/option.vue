@@ -7,6 +7,8 @@
 <script>
 	export default {
 		name: 'airx-option',
+		components: {
+		},
 		props: {
 			value: {
 				type: String,
@@ -58,7 +60,7 @@
 		},
 		methods: {
 			hello() {
-				
+				this.$emit('upup','hehe');
 			},
 			jsFun() {
 				this.scrollTopSize = document.body.scrollTop;
