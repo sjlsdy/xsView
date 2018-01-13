@@ -1,6 +1,9 @@
 html,
 body {
     font-family: Menlo, Monaco, Consolas, "Andale Mono", "lucida console", "Courier New", monospace;
+    font-size: 12px;
+    line-height: 1.8em;
+    color: #4a596c;
 }
 
 .layout-box {
@@ -12,7 +15,7 @@ body {
         left: 0;
         width: 200px;
         overflow-y: auto;
-        background: #F9F9F9;
+        background: #FFF;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
     }
     .layout-main {
@@ -31,14 +34,19 @@ body {
 
 .nav {
     ul {
-        padding: 20px 0;
+        margin: 0;
+        padding: 10px 0 0 0;
         li {
             cursor: pointer;
             line-height: 30px;
             padding: 0 20px;
-            &:hover,
+            margin: 0 0 10px 0;
+            &:hover {
+                background: #F9F9FF9;
+                color: #2D8CF0;
+            }
             &.active {
-                background: #FF9900;
+                background: #42b983;
                 color: #FFF;
             }
         }

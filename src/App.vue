@@ -31,15 +31,72 @@
 				navData: [{
 					label: '/',
 					name: '首页'
-				},{
+				}, {
 					label: 'modal',
 					name: 'Modal 弹窗'
-				},{
+				}, {
 					label: 'select',
 					name: 'Select 下拉框'
-				},{
+				}, {
 					label: 'button',
 					name: 'Button 按钮'
+				}, {
+					label: 'toogle',
+					name: 'Toogle 切换'
+				}, {
+					label: 'grid',
+					name: 'Grid 栅格'
+				}, {
+					label: 'input',
+					name: 'Input 输入框'
+				}, {
+					label: 'radio',
+					name: 'Radio 单选框'
+				}, {
+					label: 'checkbox',
+					name: 'Checkbox 多选框'
+				}, {
+					label: 'dataselector',
+					name: 'DataSelector 日期选择器'
+				}, {
+					label: 'transfer',
+					name: 'Transfer 穿梭框'
+				}, {
+					label: 'form',
+					name: 'Form 表单'
+				},{
+					label: 'alert',
+					name: 'Alert 提示'
+				}, {
+					label: 'notice',
+					name: 'Notice 通知'
+				}, {
+					label: 'badge',
+					name: 'Badge 徽标'
+				}, {
+					label: 'bubble',
+					name: 'Bubble 气泡'
+				}, {
+					label: 'carousel',
+					name: 'Carousel 走马灯'
+				}, {
+					label: 'tree',
+					name: 'Tree 树'
+				}, {
+					label: 'nav',
+					name: 'Nav 导航'
+				}, {
+					label: 'tabs',
+					name: 'Tabs 选项卡'
+				}, {
+					label: 'page',
+					name: 'Page 页码'
+				}, {
+					label: 'step',
+					name: 'Step 步骤条'
+				}, {
+					label: 'crumb',
+					name: 'Crumb 面包屑'
 				}],
 				modal1: false,
 				modal2: false,
@@ -115,14 +172,18 @@
 				alert("hello")
 			},
 			setNav(index) {
-				this.$router.push(this.navData[index]['label']);
+				let _self = this;
+				_self.$router.push(this.navData[index]['label']);
+				for(let i = 0; i < _self.navData.length; i++) {
+					this.navData[i]['selected'] = false;
+				}
+				this.navData[index]['selected'] = true;
+				_self.$set(_self.navData);
 			}
 		},
 	}
 </script>
 
 <style>
-	#app {
-		font-size: 12px;
-	}
+
 </style>

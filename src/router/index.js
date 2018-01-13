@@ -5,6 +5,8 @@ import HelloWorld from '@/components/HelloWorld'
 import modal from '@/page/modal'
 import select from '@/page/select'
 import button from '../page/button'
+import toogle from '../page/button'
+import grid from '../page/button'
 
 Vue.use(Router)
 
@@ -25,5 +27,13 @@ export default new Router({
 		path: '/button',
 		name: 'button',
 		component: button,
+	}, {
+		path: '/toogle',
+		name: 'toogle',
+		component: toogle,
+	}, {
+		path: '/grid',
+		name: 'grid',
+		component: grid,
 	}]
 })

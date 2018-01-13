@@ -1,38 +1,27 @@
 <template>
 	<div class="hello">
+		<img src="../assets/logo.png" />
 		<h1>{{ msg }}</h1>
-		<h2>Essential Links</h2>
+		<br /><br />
+		<h2>Links</h2>
 		<ul>
 			<li>
-				<a href="https://vuejs.org" target="_blank">Core Docs</a>
+				<a href="https://cn.vuejs.org/" target="_blank">Vue</a>
 			</li>
 			<li>
-				<a href="https://forum.vuejs.org" target="_blank">Forum</a>
+				<a href="https://www.iviewui.com/docs/guide/start" target="_blank">iView</a>
 			</li>
 			<li>
-				<a href="https://chat.vuejs.org" target="_blank">Community Chat</a>
+				<a href="https://router.vuejs.org/zh-cn/" target="_blank">vue-router</a>
 			</li>
 			<li>
-				<a href="https://twitter.com/vuejs" target="_blank">Twitter</a>
-			</li>
-			<br>
-			<li>
-				<a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a>
-			</li>
-		</ul>
-		<h2>Ecosystem</h2>
-		<ul>
-			<li>
-				<a href="http://router.vuejs.org/" target="_blank">vue-router</a>
+				<a href="https://vuex.vuejs.org/zh-cn/" target="_blank">vuex</a>
 			</li>
 			<li>
-				<a href="http://vuex.vuejs.org/" target="_blank">vuex</a>
+				<a href="https://vue-loader.vuejs.org/zh-cn/" target="_blank">vue-loader</a>
 			</li>
 			<li>
-				<a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a>
-			</li>
-			<li>
-				<a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a>
+				<a href="http://fontawesome.io/icons/" target="_blank">fontawesome</a>
 			</li>
 		</ul>
 	</div>
@@ -43,7 +32,7 @@
 		name: 'HelloWorld',
 		data() {
 			return {
-				msg: 'Welcome to Your Vue.js App'
+				msg: '欢迎使用Air-x View开发'
 			}
 		}
 	}
@@ -51,6 +40,12 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+	.hello {
+		padding-top: 80px;
+		text-align: center;
+		color: #4a596c;
+	}
+	
 	h1,
 	h2 {
 		font-weight: normal;
